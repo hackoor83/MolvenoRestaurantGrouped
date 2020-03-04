@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:,">
+    <title>Dish Maker</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="js/main.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Main Window and head Buttons -->
+    <div id="mainWindowAndButtons" class="jumbotron">
+        <h1 class="display-3">Welcome to the Dish of Day Maker!</h1>
+        <p class="lead">Using this tool, you can create Dish of the Day, save it to the database, to reuse it anytime.</p>
+        <hr class="my-4">
+        <p>Add as much ingredients as needed from the ingredients database, and then the cost as well as the selling price will be calculated.</p>
+
+        <!-- Header buttons -->
+        <div class="container">
+            <button id="dishMakerMainButton" type="button" class="btn btn-primary btn-lg">Dish Maker</button>
+            <button id="listDishOfTheDayButton" type="button" class="btn btn-primary btn-lg">List Dish of Day history</button>
+            <button id="ingredientsManagerMainButton" type="button" class="btn btn-primary btn-lg">Stock Manager</button>
+            <div id="ingredientsManagerMenuButtons" class="btn-group btn-group-toggle toggleShow" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="addItemIngredientsManagerMenuButton" autocomplete="off"> Add an item
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="listItemsIngredientsManagerMenuButton" autocomplete="off"> List items
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dish of the Day Manager -->
+    <!-- Dish Maker form -->
+    <div id="dishMakerForm" class="jumbotron toggleShow">
+        <h1 class="display-3">Be creative!</h1>
+        <p class="lead">If you love it, you will make it!</p>
+        <hr class="my-4">
+        <p>Add as much ingredients as needed from the ingredients database, and then the cost as well as the selling price will be calculated.</p>
+        <hr class="my-4">
+
+        <!-- Dish info -->
+        <div class="form-group">
+            <legend>Dish Info</legend>
+            <label for="newDishName">Dish name</label>
+            <input type="text" class="form-control" id="newDishName" placeholder="Enter name of the new Dish">
+            <label for="profitMarginInput">Profit margin</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span id="percentage" class="input-group-text">%</span>
+                </div>
+                <input type="number" id="profitMarginInput" class="form-control">
+            </div>
+        </div>
+
+        <!-- Ingredient addition form -->
+        <fieldset>
+            <legend>Add ingredient</legend>
+            <div class="form-group">
+                <label for="addIngredientNameInput">Item name</label>
+                <select class="form-control" id="addIngredientNameInput"></select>
+            </div>
+            <div class="form-group">
+                <label for="addIngredientAmountInput">Amount</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <!-- <span id="addIngredientAmountUnitPresentation" class="input-group-text"></span> -->
+                        <select id="addIngredientAmountUnitPresentation" class="form-control"></select>
+                    </div>
+                    <input type="number" id="addIngredientAmountInput" class="form-control">
+                </div>
+            </div>
+            <button id="addIngredientAddButton" class="btn btn-primary">Add</button>
+        </fieldset>
+
+        <hr class="my-4">
+
+        <!-- Ingridients of new dish table -->
+        <table id="dishMakerIngredientsTable" class="display">
+            <thead>
+                <tr>
+                    <th>Ingredient ID</th>
+                    <th>Ingredient</th>
+                    <th>Amount</th>
+                    <th>Unit</th>
+                    <th>Cost</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="dishMakerIngredientsTableBody"></tbody>
+        </table>
+
+        <hr class="my-4">
+
+        <!-- Cost and price calculator -->
+        <div class="container">
+            <div class="alert alert-dismissible alert-success">
+                <label><strong>Total cost:</strong><p id="totalCostCalculated"></p></label><br>
+                <label><strong>Selling price at <span id="sellingPriceAtSpan"></span> profit margin:</strong><p id="sellingPrice"></p></label>
+                <br><button id="saveNewDishToDbButton" class="btn btn-success">Save to database</button>
+                <button id="restartNewDishButton" class="btn btn-danger">Restart new dish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- List Dish of the Day database -->
+    <div id="listDishOfTheDayForm" class="jumbotron toggleShow">
+        <h1 class="display-3">List Dish of The Day list</h1>
+        <p class="lead">Using this tool you can have a birdeye view of all your Dish of the Day history, and edit them as needed.</p>
+        <hr class="my-4">
+        <p>Lising the Dishes.</p>
+        <table id="listDishOfTheDayTable" class="display">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Dish Name</th>
+                    <th>Production cost</th>
+                    <th>Selling price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="listDishOfTheDayTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Stock Manager -->
+    <div id="addItemToDbForm" class="jumbotron toggleShow">
+        <h1 class="display-3">Add items to database form</h1>
+        <p class="lead">Using this form, you can add ingredients to your database.</p>
+        <hr class="my-4">
+
+        <!-- Add items to the database form -->
+        <form>
+            <fieldset>
+                <legend>Add item</legend>
+                <div class="form-group">
+                    <label for="addItemItemNameInput">Item name</label>
+                    <input type="text" class="form-control" id="addItemItemNameInput" placeholder="Enter name or describe the item">
+                    <small class="form-text text-muted">Please use short descriptive name.</small>
+                </div>
+                <div class="form-group">
+                    <label for="addItemItemAmountInput">Amount</label>
+                    <input type="number" class="form-control" id="addItemItemAmountInput" placeholder="Amount">
+                </div>
+                <div class="form-group">
+                    <label for="addItemItemAmountUnit">Unit</label>
+                    <select class="form-control" id="addItemItemAmountUnit">
+                        <option>Select..</option>
+                        <option>Gram</option>
+                        <option>Kilogram</option>
+                        <option>Liter</option>
+                        <option>Stuk</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Total Cost</label>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">€</span>
+                            </div>
+                            <input type="number" id="addItemItemCostInput" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <button id="addItemSubmitButton" class="btn btn-primary">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- List stock items -->
+    <div id="listItemsForm" class="jumbotron toggleShow">
+        <h1 class="display-3">List items in stock</h1>
+        <p class="lead">Using this tool you can have a birdeye view of your stock, and edit them as needed.</p>
+        <hr class="my-4">
+        <p>Lising the items.</p>
+        <table id="listItemsTable" class="display">
+            <thead>
+                <tr>
+                    <th>Ingredient ID</th>
+                    <th>Ingredient</th>
+                    <th>Amount</th>
+                    <th>Unit</th>
+                    <th>Total Cost</th>
+                    <th>Cost/Unit</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="listItemsTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
