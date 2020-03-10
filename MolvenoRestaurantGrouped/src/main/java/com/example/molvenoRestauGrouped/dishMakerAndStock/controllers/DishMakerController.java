@@ -25,7 +25,7 @@ public class DishMakerController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteDishOfTheDay(Long id){
+    public void deleteDishOfTheDay(@PathVariable Long id){
         dishOfTheDayRepository.deleteById(id);
     }
 }

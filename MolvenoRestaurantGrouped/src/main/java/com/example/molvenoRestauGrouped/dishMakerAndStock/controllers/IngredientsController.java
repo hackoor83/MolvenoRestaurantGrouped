@@ -29,4 +29,11 @@ public class IngredientsController {
         ingredientRepository.deleteById(id);
     }
 
+    @PutMapping("/update/{id}")
+    public void editStockItem(@RequestBody Ingredient ingredient, @PathVariable Long id){
+        ingredient.setId(id);
+        ingredientRepository.save(ingredient);
+
+    }
+
 }

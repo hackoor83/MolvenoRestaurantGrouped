@@ -20,6 +20,7 @@ $(document).ready(function() {
     $("#saveNewDishToDbButton").click(saveNewDishToDb);
     $("#listDishOfTheDayButton").click(showListDishOfTheDay);
     $("#restartNewDishButton").click(clearIngredientForm);
+    // $("#addIngredientAddButton").click(listIngredientToDish);
 
 });
 
@@ -137,6 +138,7 @@ function showDishMakerForm() {
             let ingredientAmount = $("#addIngredientAmountInput").val();
             let inputUnitOption = $("#addIngredientAmountUnitPresentation option:selected").text();
             console.log('total cost calculated before for: ' + totalCostCalculated);
+            console.log('type of totalCostcalculated variable: ' + typeof(totalCostCalculated));
 
             // dishMakerIngredientsTable.clear().draw();
             for (i = 0; i < items.length; i++) {
@@ -155,18 +157,26 @@ function showDishMakerForm() {
                             '<td>' + Number(pricePerAmount).toFixed(2) + '</td>' +
                             // '<td>' + unitConverter(ingredientAmount, item.unit, inputUnitOption) + '</td>' +
                             // '<td><button class="btn btn-danger" onclick="removeIngredient(' + (pricePerAmount, sellingPrice) + ');">Remove</button></td></tr>'
-                            '<td><button class="btn btn-danger" onclick="removeIngredient(' + item.id + ');">Remove</button></td></tr>'
+                            '<td><button class="btn btn-danger" onclick="removeIngredient(' + item.id + "," + pricePerAmount + ');">Remove</button></td></tr>'
                         )).draw();
                     totalCostCalculated += pricePerAmount;
                     sellingPrice = totalCostCalculated + (totalCostCalculated * ($("#profitMarginInput").val() / 100));
                     console.log('total cost calculated in if statement: ' + totalCostCalculated);
                 }
             }
-            $("#totalCostCalculated").text(Math.round(totalCostCalculated * Math.pow(10, 2)) / Math.pow(10, 2) + " € ");
-            $("#sellingPriceAtSpan").text($("#profitMarginInput").val() + "%");
-            $("#sellingPrice").text((Math.round(sellingPrice * Math.pow(10, 2)) / Math.pow(10, 2)) + " € ");
+            updateCostAndPrice();
+            // $("#totalCostCalculated").text(Math.round(totalCostCalculated * Math.pow(10, 2)) / Math.pow(10, 2));
+            // $("#sellingPriceAtSpan").text($("#profitMarginInput").val());
+            // $("#sellingPrice").text((Math.round(sellingPrice * Math.pow(10, 2)) / Math.pow(10, 2)));
 
+        }
 
+        //To update the cost and selling price alert box:
+        function updateCostAndPrice() {
+            $("#totalCostCalculated").text(Math.round(totalCostCalculated * Math.pow(10, 2)) / Math.pow(10, 2));
+            $("#sellingPriceAtSpan").text($("#profitMarginInput").val());
+            $("#sellingPrice").text((Math.round(sellingPrice * Math.pow(10, 2)) / Math.pow(10, 2)));
+            alert('recalculated via updateCostAndPrice method');
         }
 
         //To convert unit:
@@ -192,16 +202,14 @@ function showDishMakerForm() {
     });
 }
 
-//>>>> To remove an ingredient from the dish
+// >>>> To remove an ingredient from the dish
 function removeIngredient(id) {
-    // function removeIngredient(pricePerAmount, sellingPrice) {
-    // dishMakerIngredientsTable.row("#row" + id).remove().draw();
-    // dishMakerIngredientsTable.row($(this).parents('tr')).remove().draw();
     $("#row" + id).remove();
-    // totalCostCalculated -= pricePerAmount;
+    // totalCostCalculated -= pricePerAmoutOfItem;
+    alert('Ingredient removed!');
+    console.log("update cost and price function called");
     // $("#sellingPrice").text('');
     // $("#sellingPrice").text((Math.round(sellingPrice * Math.pow(10, 2)) / Math.pow(10, 2)) + " € ");
-    alert('Ingredient removed!');
 }
 
 //To clear up the ingredients table:
