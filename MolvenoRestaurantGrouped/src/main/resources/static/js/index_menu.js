@@ -16,6 +16,7 @@ $(document).ready(function() {
         .show(500);
     }
     e.preventDefault();
+
   });
 
   // add event to my order button
