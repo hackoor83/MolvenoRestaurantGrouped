@@ -23,7 +23,7 @@
 
 <body>
     <!-- Main Window and head Buttons -->
-    <div id="mainWindowAndButtons" class="jumbotron">
+    <div id="mainWindowAndButtons" class="jumbotron container">
         <h1 class="display-3">Welcome to the Dish of The Day Maker!</h1>
         <p class="lead">Using this tool, you can create Dish of the Day, save it to the database, to reuse it anytime.</p>
         <hr class="my-4">
@@ -31,16 +31,26 @@
 
         <!-- Header buttons -->
         <div class="container">
-            <button id="dishMakerMainButton" type="button" class="btn btn-primary btn-lg">Dish Maker</button>
-            <button id="listDishOfTheDayButton" type="button" class="btn btn-primary btn-lg">List Dish of Day history</button>
-            <button id="stockItemsManagerMainButton" type="button" class="btn btn-primary btn-lg">Stock Manager</button>
-            <div id="stockItemsManagerMenuButtons" class="btn-group btn-group-toggle toggleShow" data-toggle="buttons">
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="addItemStockManagerMenuButton" autocomplete="off"> Add an item
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="listItemsStockManagerMenuButton" autocomplete="off"> List items
-                </label>
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-primary">Dish Maker</button>
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+                        <a id="dishMakerMainButton" class="dropdown-item" href="#">Create a dish</a>
+                        <a id="listDishOfTheDayButton" class="dropdown-item" href="#">List of created dishes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-success">Stock Manager</button>
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2" style="">
+                        <a id="addItemStockManagerMenuButton" class="dropdown-item" href="#">Add an item</a>
+                        <a id="listItemsStockManagerMenuButton" class="dropdown-item" href="#">List items</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

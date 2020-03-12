@@ -16,16 +16,16 @@ public class StockItem {
 //    @ManyToMany(mappedBy = "ingredients")
 //    Set<Dish> dishList;
 
-    @OneToMany(mappedBy = "stockItem")
-    private Set<IngredientAmount> ingredientAmounts;
-
-    public Set<IngredientAmount> getIngredientAmounts() {
-        return ingredientAmounts;
-    }
-
-    public void setIngredientAmounts(Set<IngredientAmount> ingredientAmounts) {
-        this.ingredientAmounts = ingredientAmounts;
-    }
+//    @OneToMany(mappedBy = "stockItem")
+//    private Set<IngredientAmount> ingredientAmounts;
+//
+//    public Set<IngredientAmount> getIngredientAmounts() {
+//        return ingredientAmounts;
+//    }
+//
+//    public void setIngredientAmounts(Set<IngredientAmount> ingredientAmounts) {
+//        this.ingredientAmounts = ingredientAmounts;
+//    }
 
 
     //    @JoinColumn(name="dish_id")
