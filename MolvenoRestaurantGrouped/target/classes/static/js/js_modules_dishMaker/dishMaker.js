@@ -138,41 +138,9 @@ function showDishMakerForm() {
 
 //to show the add ingredient form:
 
-// let newDishId = 0;
-
 function showAddIngredientForm() {
     $("#addIngredientForm").show();
     $("#dishMakerIngredientTableDiv").show();
-
-    //To create a dish of day id:
-
-    // let newDish = {
-    //     dishName: $("#newDishName").val()
-    // }
-
-    // let jsonObject = JSON.stringify(newDish);
-
-    // $.ajax({
-    //     url: "api/dishMaker",
-    //     type: "POST",
-    //     contentType: "application/json",
-    //     data: jsonObject,
-    //     success: function() {
-    //         alert("new dish id created");
-    //     },
-    //     error: function() {
-    //         alert("ERROR: Cannot create dish");
-    //     }
-    // });
-
-    // $.get("api/dishMaker", function(dishes) {
-    //     console.log(dishes);
-    //     for (i = 0; i < dishes.length; i++) {
-    //         if (dishes.dishName == $("#newDishName").val()) {
-    //             newDishId = dishes.id;
-    //         }
-    //     }
-    // });
 
 }
 
@@ -187,17 +155,6 @@ function removeIngredient(id, pricePerAmountOfItem) {
     totalRecalculated = totalCostCalculated;
     totalCostCalculated = 0;
     $("#totalCostCalculated").text(totalRecalculated);
-
-    // $.ajax({
-    //     url: "api/dodIngredients/" + id,
-    //     type: "DELETE",
-    //     success: function() {
-    //         alert('ingredient REMOVED from db');
-    //     },
-    //     error: function() {
-    //         alert('ERROR');
-    //     }
-    // });
 
 }
 
@@ -214,41 +171,6 @@ function clearIngredientForm() {
     $("#sellingPrice").text('');
 }
 
-//To add ingredient to the db:
-// function addIngredientToDb(ingredientId, ingredientName, ingredientAmount, ingredientUnit, amountCost) {
-//     console.log(ingredientId, ingredientName, ingredientAmount, ingredientUnit, amountCost);
-
-
-
-// let newIngredient = {
-//     id: ingredientId,
-//     name: ingredientName,
-//     amount: ingredientAmount,
-//     unit: ingredientUnit,
-//     cost: amountCost,
-//     dishOfTheDay: {
-//         id: newDishId,
-//         dishName: $("#newDishName").val(),
-//         cost: $("#totalCostCalculated").text(),
-//         price: $("#sellingPrice").text()
-//     }
-// }
-
-// let jsonObject = JSON.stringify(newIngredient);
-
-// $.ajax({
-//     url: "api/dodIngredients",
-//     type: "POST",
-//     contentType: "application/json",
-//     data: jsonObject,
-//     success: function() {
-//         alert('ingredient added to db');
-//     },
-//     error: function() {
-//         alert('ERROR');
-//     }
-// });
-// }
 
 //>>> To add the new Dish to the database
 function saveNewDishToDb() {
@@ -272,10 +194,6 @@ function saveNewDishToDb() {
         dishName: $("#newDishName").val(),
         cost: $("#totalCostCalculated").text(),
         price: $("#sellingPrice").text()
-            // ingredientAmounts: [{
-            //     amount: ,
-            //     unit:
-            // }]
     }
 
     let jsonObject = JSON.stringify(newDish);

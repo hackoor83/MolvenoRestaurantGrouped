@@ -13,28 +13,34 @@ public class DishOD {
     private String dishName;
     private Double cost, price;
 
-//    @OneToMany(
-//            mappedBy = "dishOfTheDay",
-//            cascade = {CascadeType.ALL}
-//    )
-//    @ManyToMany
-//    @JoinTable(
-//            name = "ingredients",
-//            joinColumns = @JoinColumn(name = "dish_id"),
-//            inverseJoinColumns = @JoinColumn(name = "stockItem_id")
-//    )
-//    private Set<IngredientAmount> ingredients;
-
     @OneToMany(mappedBy = "dishOD")
-    private Set<IngredientAmount> ingredientAmounts;
+    List<IngredientItem> ingredientItemList;
 
-    public Set<IngredientAmount> getIngredientAmounts() {
-        return ingredientAmounts;
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+
+    public List<IngredientItem> getIngredientItemList() {
+        return ingredientItemList;
     }
 
-    public void setIngredientAmounts(Set<IngredientAmount> ingredientAmounts) {
-        this.ingredientAmounts = ingredientAmounts;
+    public void setIngredientItemList(List<IngredientItem> ingredientItemList) {
+        this.ingredientItemList = ingredientItemList;
     }
+
+    //    @OneToMany(mappedBy = "dishOD")
+//    private Set<IngredientAmount> ingredientAmounts;
+
+
+
+//    public Set<IngredientAmount> getIngredientAmounts() {
+//        return ingredientAmounts;
+//    }
+//
+//
+//    public void setIngredientAmounts(Set<IngredientAmount> ingredientAmounts) {
+//        this.ingredientAmounts = ingredientAmounts;
+//    }
 
     //    public void setId(Long id) {
 //        this.id = id;

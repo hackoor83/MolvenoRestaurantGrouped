@@ -90,25 +90,3 @@ function showListDishOfTheDay() {
     $("#listDishOfTheDayForm").show();
     listDishOfTheDayTable.ajax.reload();
 }
-
-
-
-//         //To clear the contents of the table, this is instead of: $("#listItemsTableBody").empty();
-//         listDishOfTheDayTable.clear();
-
-//         for (i = 0; i < dishes.length; i++) {
-//             const dish = dishes[i];
-
-//             //To append new row that can be controlled by datatables. This is instead of: $("#listItemsTableBody").append(...)
-//             listDishOfTheDayTable.row.add(
-//                 $(
-//                     '<tr id="row' + dish.id + '"><td>' + dish.id + '</td>' +
-//                     '<td>' + dish.dishName + '</td>' +
-//                     '<td>' + dish.cost + '</td>' +
-//                     '<td>' + dish.price + '</td>' +
-//                     '<td><button class="btn btn-danger" onclick="deleteDish(' + dish.id + ');">Delete</button></td></tr>'
-//                 )).draw();
-//         }
-//     });
-
-// }
