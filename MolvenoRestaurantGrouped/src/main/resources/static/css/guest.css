@@ -1,0 +1,10 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px;
+}
+
+.container {
+  padding: 2rem;
+  border: 1px solid #008cba;
+  max-width: 800px;
+}
