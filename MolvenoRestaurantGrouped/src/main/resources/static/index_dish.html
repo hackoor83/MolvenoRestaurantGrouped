@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dishes Data</title>
+    <!-- import dataTable link  -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
+    />
+
+    <!-- imports JQuery  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/dishOD.css" />
+  </head>
+  <body>
+    <!-- define an update modal -->
+    <div id="updateModal" class="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color:#138496;">
+            <h5 class="title">Update Dish Data</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="categoryEditNamelabel">Category *</label>
+                <select class="form-control" id="categoryEditName">
+                  <option></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="dishEditnamelable"> Name </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editName"
+                  placeholder="Dish Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="dishEditDescriptionlable"> Description </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editDescription"
+                  placeholder="Dish Description"
+                />
+              </div>
+              <div class="form-group">
+                <label for="dishEditPrice"> Description </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="editPrice"
+                  placeholder="Dish price"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="dishEditSizeLabel"> Size </label>
+                <input
+                  type="text"
+                  id="editSize"
+                  class="form-control"
+                  placeholder="Dish Size"
+                />
+              </div>
+              <div class="form-group">
+                <label for="AvailabilityEditlabel">Availability</label>
+                <select class="form-control" id="editavailability">
+                  <option value="true"> Yes </option>
+                  <option value="false"> No </option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="save" class="btn btn-primary">
+              Save
+            </button>
+            <button type="button" id="dismissbtn" class="btn btn-secondary">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Delete Alert Modal section -->
+    <div id="confirm" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #FFAE42">
+            <h5 class="modal-title">Warning</h5>
+            <button
+              type="button"
+              class="closeBtn"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="yesBtn" class="btn btn-primary">
+              Yes
+            </button>
+            <button
+              type="button"
+              id="closeConfirm"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error/Success Modal Messages -->
+    <div id="error" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Warning</h5>
+            <button
+              type="button"
+              id="closeError"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="message"></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="closeOK"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 style="text-align: center;">Dish Data</h2>
+      <div class="row">
+        <div class="col-md-8">
+          <form>
+            <fieldset>
+              <div class="form-group">
+                <label for="categoryNamelabel">Category *</label>
+                <select class="form-control" id="categoryName">
+                  <option></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="dishNameLabel"> Name * </label>
+                <input
+                  type="text"
+                  id="dishName"
+                  class="form-control"
+                  placeholder="Dish Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="dishDescriptionLabel"> Description </label>
+                <input
+                  type="text"
+                  id="description"
+                  class="form-control"
+                  placeholder="Dish Description"
+                />
+              </div>
+              <div class="form-group">
+                <label for="dishPriceLabel"> Price * </label>
+                <input
+                  type="number"
+                  id="price"
+                  class="form-control"
+                  placeholder="Dish price"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="dishSizeLabel"> Size </label>
+                <input
+                  type="text"
+                  id="size"
+                  class="form-control"
+                  placeholder="Dish Size"
+                />
+              </div>
+              <div class="form-group">
+                <label for="Availabilitylabel">Availability</label>
+                <select class="form-control" id="availability">
+                  <option value="true"> Yes </option>
+                  <option value="false"> No </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="button" id="addDish" class="btn btn-info">
+                  Add Dish
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <table
+            id="dishContainer"
+            class="table table-bordered table-striped table-hover"
+          >
+            <thead>
+              <tr class="table-primary">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Avaliability</th>
+                <th>Size</th>
+                <th>Category</th>
+                <th>Delete</th>
+                <th>Update</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/index_dish.js"></script>
+  </body>
+</html>

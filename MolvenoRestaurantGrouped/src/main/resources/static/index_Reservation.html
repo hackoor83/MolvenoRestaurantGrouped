@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resevation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main_reservation.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+
+    <script src="/js/main_reservation.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<header class="header">
+    <img src="https://uwmode.nl/wp-content/uploads/2014/12/restaurant.jpeg">
+
+    <h1>Reservation</h1>
+    <h2>mangement</h2>
+
+</header>
+
+<div class="myDiv">
+
+    <label class="col-form-label" for="inputDefault">First name:</label>
+    <input class="form-control" id="guestFirstName" type="text">
+
+    <label class="col-form-label" for="inputDefault">Last name:</label>
+    <input class="form-control" id="guestLastName" type="text">
+
+    <label class="col-form-label" for="inputDefault">Phone number:</label>
+    <input class="form-control" id="telefoon" type="number">
+
+    <label class="col-form-label" for="inputDefault">Date :</label>
+    <input class="form-control" id="date" type="text">
+
+    <label class="col-form-label" for="inputDefault">Time:</label>
+    <input class="form-control" id="time" type="time">
+
+    <label class="col-form-label" for="inputDefault">Number of guests:</label>
+    <input class="form-control" id="numberOfGuest" type="number" >
+
+</div>
+
+<div id="buttons">
+    <button id="add" class="btn btn-success disabled" type="button">Add Reservation</button>
+
+</div>
+
+<div>
+    <label>AVAILABLE SEATS : </label>
+    <P id="seat"></P>
+</div>
+
+
+<div id="tab">
+    <table class="table table-hover" id="resvationform">
+        <thead>
+        <tr>
+            <th scope="col">Number Reservation</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Number of guest</th>
+
+        </tr>
+        </thead>
+        <tbody id="resevationlist">
+
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" id="confirm" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Cconfirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="delete">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="upload" tabindex="1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Cconfirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="edit">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
