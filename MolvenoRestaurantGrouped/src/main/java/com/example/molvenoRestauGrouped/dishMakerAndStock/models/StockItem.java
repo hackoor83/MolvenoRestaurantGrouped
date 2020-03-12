@@ -11,17 +11,17 @@ public class Ingredient {
     private Double amount;
     private Double cost;
 
-    @ManyToOne
-    @JoinColumn(name="dishOfTheDay_id")
-    private DishOfTheDay dishOfTheDay;
+//    @ManyToOne
+//    @JoinColumn(name="dishOfTheDay_id")
+//    private DishOfTheDay dishOfTheDay;
 
-    public DishOfTheDay getDishOfTheDay() {
-        return dishOfTheDay;
-    }
-
-    public void setDishOfTheDay(DishOfTheDay dishOfTheDay) {
-        this.dishOfTheDay = dishOfTheDay;
-    }
+//    public DishOfTheDay getDishOfTheDay() {
+//        return dishOfTheDay;
+//    }
+//
+//    public void setDishOfTheDay(DishOfTheDay dishOfTheDay) {
+//        this.dishOfTheDay = dishOfTheDay;
+//    }
 
     public Long getId() {
         return id;
