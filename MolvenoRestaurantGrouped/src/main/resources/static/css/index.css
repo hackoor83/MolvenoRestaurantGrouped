@@ -1,0 +1,198 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+
+#myNavbar {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: #375a7f;
+  color: #fff;
+  justify-content: space-between;
+  height: 10vh;
+  font-size: 22px;
+  z-index: 1;
+  padding: 1rem;
+}
+#myNavbar ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  font-size: 24px;
+}
+
+#myNavbar ul li a {
+  color: #fff;
+  padding: 0.75rem;
+  margin: 0 0.25rem;
+}
+
+#myNavbar ul li ul {
+  display: none;
+  position: absolute;
+  color: white;
+  background-color: #375a7f;
+  font-size: 20px;
+  text-transform: uppercase;
+  min-width: 160px;
+  align-items: center;
+  border-radius: 3px 3px 4px 4px;
+  outline: none;
+  z-index: 2;
+}
+
+#myNavbar ul li:hover ul {
+  display: block;
+}
+
+#myNavbar ul li ul li:first-child {
+  padding-top: 1rem;
+}
+#myNavbar ul li ul li {
+  width: 100px;
+  border-radius: 1px;
+  display: block;
+  margin: 2px 0 15px 0;
+}
+
+.inside a:hover {
+  background: #010101;
+  transition: 0.6s;
+}
+
+#myNavbar ul li ul li a {
+  padding: 4px 16px;
+  margin: 0.5rem;
+}
+#myNavbar ul li a:hover {
+  background: #333;
+  border-radius: 5px;
+}
+
+p {
+  margin: 0.75rem 0;
+  line-height: 50px;
+  font-size: 18px;
+}
+
+.text {
+  color: #333;
+}
+.large-heading {
+  font-size: 2.3rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+.medium-heading {
+  font-size: 2rem;
+  margin-bottom: 0.75;
+  line-height: 1.1;
+}
+.lead {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+.py-1 {
+  padding: 1.5rem 0;
+}
+.py-2 {
+  padding: 2rem 0;
+}
+.py-3 {
+  padding: 3rem 0;
+}
+.myContainer {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+#Showbanner {
+  background: #333 url("../css/2.jpg") no-repeat center center/cover;
+  height: 100vh;
+  color: #fff;
+  animation: animate 10s infinite;
+}
+#Showbanner .showbanner-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem;
+  position: absolute;
+  top: 76px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes animate {
+  20% {
+    background: url("../css/3.jpg");
+    background-size: cover;
+  }
+  40% {
+    background: url("../css/4.jpg");
+    background-size: cover;
+  }
+  60% {
+    background: url("../css/5.jpg");
+    background-size: cover;
+  }
+  80% {
+    background: url("../css/6.jpg");
+    background-size: cover;
+  }
+  100% {
+    background: url("../css/2.jpg");
+    background-size: cover;
+  }
+}
+#restaurant-info {
+  height: 400px;
+  padding: 12px;
+}
+
+#restaurant-info .info-img {
+  float: left;
+  width: 50%;
+  background: url("../css/info_img.jpg") no-repeat;
+  min-height: 100%;
+}
+#home-info .info-content p {
+  padding-bottom: 30px;
+}
+
+.bg-dark {
+  background: #375a7f;
+  color: #fff;
+}
+
+#restaurant-info .info-content {
+  float: right;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  padding: 30px 30px;
+  overflow: hidden;
+}
+#main-footer {
+  text-align: center;
+  background: #333;
+  padding: 20px;
+  font-size: 20px;
+  color: #fff;
+}
