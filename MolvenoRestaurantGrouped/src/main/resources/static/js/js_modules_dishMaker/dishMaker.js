@@ -257,12 +257,11 @@ function saveNewDishToDb() {
     //iterate through the table to extract data and convert it into an array of objects:
 
     let arrayOfIngredients = $("#dishMakerIngredientsTable tr").map(function() {
-        return [
-            $('td', this).map(function() {
-                return $(this).text();
-            }).get()
-        ];
+        return $('td', this).map(function() {
+            return $(this).text();
+        }).get();
     }).get();
+
     let jsonArrayOfIngredients = JSON.stringify(arrayOfIngredients);
     console.log('array of ingredients: ' + arrayOfIngredients);
     console.log('array of ingredients stringify: ' + jsonArrayOfIngredients);
@@ -271,11 +270,8 @@ function saveNewDishToDb() {
     let newDish = {
         dishName: $("#newDishName").val(),
         cost: $("#totalCostCalculated").text(),
-        price: $("#sellingPrice").text()
-            // ingredientAmounts: [{
-            //     amount: ,
-            //     unit:
-            // }]
+        price: $("#sellingPrice").text(),
+        ingredientAmounts: jsonArrayOfIngredients
     }
 
     let jsonObject = JSON.stringify(newDish);
