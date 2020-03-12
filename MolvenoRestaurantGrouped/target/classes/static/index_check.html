@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Check Availability</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--    datatable-->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <!--    div style-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="js/main_check.js"></script>
+    <link rel="stylesheet" href="css/check.css">
+</head>
+
+<body>
+    <div>
+        <label>Choose the date</label>
+        <input id="date" type="date" name="datemin" min="2020-03-13"><br>
+        <label>Number of guests</label>
+        <input id="numOfGuest"><br>
+        <button id="check" class="btn btn-primary">Check availability</button>
+        <table id="availableTables" class="table table-bordered table-hover">
+            <thead >
+                <tr>
+                    <th scope="col">Choose the table</th>
+                    <th scope="col">Number of Table</th>
+                    <th scope="col">The shape of table</th>
+                    <th scope="col">The number of seats</th>
+                </tr>
+            </thead>
+        </table>
+        <form>
+        <input id="createReservation" class="btn btn-primary" type="button" onclick="location.href='index_reservation.html';" value="create Reservation" />
+<!--        <a href="static/index_reservationManagment.html" ></a>-->
+        </form>
+    </div>
+
+
+</body>
+
+</html>

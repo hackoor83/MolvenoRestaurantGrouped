@@ -1,214 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Category Menu</title>
     <!-- import dataTable link  -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
 
     <!-- imports JQuery  -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <link
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+    <script src="js/fontAwesome.js"></script>
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    /> -->
+    <link rel="stylesheet" href="css/fontAwesome.css" />
 
     <link rel="stylesheet" href="/css/category.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Delete Alert Modal section -->
     <div id="confirm" class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="background-color: #FFAE42;">
-            <h5 class="modal-title">Warning</h5>
-            <button
-              type="button"
-              class="closeBtn"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #FFAE42;">
+                    <h5 class="modal-title">Warning</h5>
+                    <button type="button" class="closeBtn" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">
-            <p>Are you sure you want to delete?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="yesBtn" class="btn btn-primary">
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="yesBtn" class="btn btn-primary">
               Yes
             </button>
-            <button
-              type="button"
-              id="closeConfirm"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
+                    <button type="button" id="closeConfirm" class="btn btn-secondary" data-dismiss="modal">
               No
             </button>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <!--  Update modal -->
     <div id="updateModal" class="modal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="background-color:#138496;">
-            <h5 class="title">Update Category Data</h5>
-            <button
-              type="button"
-              id="updateClose"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#138496;">
+                    <h5 class="title">Update Category Data</h5>
+                    <button type="button" id="updateClose" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="guestEditFirstNamelable"> Name </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="editName"
-                  placeholder="Category Name"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="EditLastNamelable"> Description </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="editDescription"
-                  placeholder="Category Description"
-                  required
-                />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="save" class="btn btn-primary">
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="guestEditFirstNamelable"> Name </label>
+                            <input type="text" class="form-control" id="editName" placeholder="Category Name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="EditLastNamelable"> Description </label>
+                            <input type="text" class="form-control" id="editDescription" placeholder="Category Description" required />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="save" class="btn btn-primary">
               Save
             </button>
-            <button type="button" id="closeSmallbtn" class="btn btn-secondary">
+                    <button type="button" id="closeSmallbtn" class="btn btn-secondary">
               Close
             </button>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <!-- Error/Success Modal Messages -->
     <div id="error" class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Warning</h5>
-            <button
-              type="button"
-              id="closeError"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Warning</h5>
+                    <button type="button" id="closeError" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">
-            <p id="message"></p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              id="closeOK"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
+                </div>
+                <div class="modal-body">
+                    <p id="message"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeOK" class="btn btn-secondary" data-dismiss="modal">
               OK
             </button>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- container of the form and table -->
     <div class="container">
-      <h2 style="text-align: center;">Category Data</h2>
-      <div class="row">
-        <div class="col-md-8">
-          <form>
-            <fieldset>
-              <div class="form-group">
-                <label for="categoryNameLabel"> Name </label>
-                <input
-                  type="text"
-                  id="categoryName"
-                  class="form-control"
-                  placeholder="Category Name"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="categoryDescription"> Description </label>
-                <input
-                  id="description"
-                  class="form-control"
-                  placeholder="Category Description"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <button type="button" id="addCategory" class="btn btn-info">
+        <h2 style="text-align: center;">Category Data</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="categoryNameLabel"> Name </label>
+                            <input type="text" id="categoryName" class="form-control" placeholder="Category Name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription"> Description </label>
+                            <input id="description" class="form-control" placeholder="Category Description" required />
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="addCategory" class="btn btn-info">
                   Add Category
                 </button>
-              </div>
-            </fieldset>
-          </form>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-md-12">
+                <table id="categoryContainer" class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
-        <div class="col-md-12">
-          <table
-            id="categoryContainer"
-            class="table table-bordered table-striped table-hover"
-          >
-            <thead>
-              <tr class="table-primary">
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Delete</th>
-                <th>Update</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-      </div>
     </div>
     <script src="/js/index_category.js"></script>
-  </body>
+</body>
+
 </html>
