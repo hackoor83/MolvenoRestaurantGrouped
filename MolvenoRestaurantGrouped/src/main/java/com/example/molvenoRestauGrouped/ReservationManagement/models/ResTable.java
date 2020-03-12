@@ -1,10 +1,8 @@
-package com.example.molvenoRestauGrouped.tablesManagement;
+package com.example.molvenoRestauGrouped.ReservationManagement.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"tableNum"})})
 @Entity
 public class ResTable {
     @Id
@@ -12,24 +10,39 @@ public class ResTable {
    private Long id;
    private String shape;
    private int numOfSeats;
-   private Boolean availability;
+   private Boolean available;
     private String tableNum;
+//    @ManyToOne
+//    private Reservation reservation;
 
 
-    public ResTable(Long id, String shape, int numOfSeats, Boolean availability, String tableNum) {
+    public ResTable(Long id, String shape, int numOfSeats, Boolean available, String tableNum) {
         this.id = id;
         this.shape = shape;
         this.numOfSeats = numOfSeats;
-        this.availability = availability;
+        this.available = available;
         this.tableNum = tableNum;
     }
 
-    public Boolean getAvailability() {
-        return availability;
+    public ResTable() {
     }
 
-    public void setAvailability(Boolean availability) {
-        this.availability = availability;
+//    public Reservation getReservation() {
+//        return reservation;
+//    }
+//
+//    public void setReservation(Reservation reservation) {
+//        this.reservation = reservation;
+//    }
+
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = true;
+
     }
 
     public String getTableNum() {
@@ -38,12 +51,6 @@ public class ResTable {
 
     public void setTableNum(String tableNum) {
         this.tableNum = tableNum;
-    }
-
-
-
-
-    public ResTable() {
     }
 
 

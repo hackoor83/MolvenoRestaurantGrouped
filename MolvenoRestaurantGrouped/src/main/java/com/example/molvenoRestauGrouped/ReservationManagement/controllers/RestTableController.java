@@ -1,5 +1,8 @@
-package com.example.molvenoRestauGrouped.tablesManagement;
+package com.example.molvenoRestauGrouped.ReservationManagement.controllers;
 
+import com.example.molvenoRestauGrouped.ReservationManagement.models.ResTable;
+import com.example.molvenoRestauGrouped.ReservationManagement.repositories.ResTableRepository;
+import com.example.molvenoRestauGrouped.ReservationManagement.repositories.ReservRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +13,8 @@ import java.util.List;
 public class RestTableController {
     @Autowired
     ResTableRepository myrepository;
-
+@Autowired
+    ReservRepository reservRepository;
     //creating a get mapping for all tables from a database
 @GetMapping
 @ResponseBody
@@ -23,6 +27,7 @@ public List<ResTable> getAllTable  (){
     @PostMapping
     public void postTable(@RequestBody ResTable resTable){
     //Car my car
+//    resTable.setAvailable(true);
     myrepository.save(resTable);
      }
 //api/tables/1
@@ -34,9 +39,24 @@ public List<ResTable> getAllTable  (){
 
     @PutMapping({"/id"})
     public void updateTable (@PathVariable Long id,@RequestBody ResTable resTable){
-    resTable.setId(id);
+   // resTable.setId(id);
     myrepository.save(resTable);
     }
+
+//    @PostMapping("/api/tables/available")
+//    public void available(@RequestBody ResTable resTable){
+//    ResTable[] restaurantTables ={};
+//    for( ResTable resTable1: restaurantTables){
+//        if(resTable.getAvailability()==true){
+//            myrepository.findById(resTable.getId());
+//        }
+//        else{
+//
+//        }
+//
+//    }
+//
+//    }
 
 
 

@@ -1,5 +1,6 @@
-package com.example.molvenoRestauGrouped.tablesManagement;
+package com.example.molvenoRestauGrouped.ReservationManagement.repositories;
 
+import com.example.molvenoRestauGrouped.ReservationManagement.models.ResTable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ResTableRepository extends JpaRepository <ResTable,Long>{
