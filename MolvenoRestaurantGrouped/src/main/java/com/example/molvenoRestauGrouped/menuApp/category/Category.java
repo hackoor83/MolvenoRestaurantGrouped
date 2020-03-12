@@ -1,4 +1,4 @@
-package com.capgemini.molvenorestaurant.restaurant.menu.category;
+package com.example.molvenoRestauGrouped.menuApp.category;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

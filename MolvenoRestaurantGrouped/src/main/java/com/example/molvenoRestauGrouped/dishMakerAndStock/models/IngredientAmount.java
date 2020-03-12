@@ -14,9 +14,9 @@ public class IngredientAmount {
     StockItem stockItem;
 
     @ManyToOne
-    @MapsId("dish_Id")
-    @JoinColumn(name = "dish_Id")
-    Dish dish;
+    @MapsId("dishod_Id")
+    @JoinColumn(name = "dishod_Id")
+    DishOD dishOD;
 
     Double amount;
     String unit;
@@ -37,12 +37,12 @@ public class IngredientAmount {
         this.stockItem = stockItem;
     }
 
-    public Dish getDish() {
-        return dish;
+    public DishOD getDishOD() {
+        return dishOD;
     }
 
-    public void setDish(Dish dish) {
-        this.dish = dish;
+    public void setDishOD(DishOD dishOD) {
+        this.dishOD = dishOD;
     }
 
     public Double getAmount() {

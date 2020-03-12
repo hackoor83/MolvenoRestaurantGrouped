@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>    
+    <script src="/js/main_stock_cathy.js"></script>
+
+    <title>Item</title>
+</head>
+<body>
+
+
+<!-- Modal -->
+<!--a modal to ask if you are sure with deleting the item-->
+<div class="modal" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               Are you sure you want to delete?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="yesBtn">Yes</button>
+                <button type="button" class="btn btn-primary" id="delete">No</button>
+
+        </div>
+        </div>
+
+</div>
+</div>
+
+
+
+<!-- modal for update items -->
+<div id="updateModal" class="modal" tabindex="-1" role="dialog" style="display: none;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="updateModal-title">Update Items Data</h5>
+          <button type="button" class="closeEdit" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <input class="col-sm-10" type="text" id="itemEditName" placeholder="Item Name" />
+              <input class="col-sm-10" type="number" id="itemEditPrice" placeholder="Item price" />
+              <input class="col-sm-10" type="number" id="itemEditQuantity" placeholder="Item quantity" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="update" class="btn btn-primary">Save</button>
+          <button type="button" id="closeEditbtn" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+        </div>
+     </div>
+    </div>
+    
+
+
+<div class="mainContainer" style="max-width: 700px; align-items: center; justify-content: center; margin-left: 4rem;">
+    <div id="formContainer" style="max-width: 500px; align-items: center; padding: 2rem;">
+        <h1 style="text-align: center;" >
+            Stock Management
+        </h1>
+    
+        <form>
+            <h2 style="text-align: center; padding-top: 1rem;">Item Form</h2>
+            <label for="itemNameInput">Name: </label>
+            <input type="text" placeholder="Item Name" id="itemNameInput" class="form-control-plaintext"/>
+            <label for="priceInput">Price: </label>
+            <input type="number" placeholder="Price" id="priceInput" class="form-control-plaintext"/>
+            <label for="quantityInput">Quantity: </label>
+            <input type="number" placeholder="Quantity" id="quantityInput" class="form-control-plaintext"/>
+            <div class="input-group mb-3">
+                <label>Unit  </label><br>
+                 <select id="quantityUnit" class="custom-select">
+                   <option> Gram </option>
+                   <option> Kilogram </option>
+                   <option> Liter </option>
+                   <option> Stuk </option>
+                 </select>
+                 </div>
+            <br>
+            <button id="createItemButton" type="button" class="btn btn-success btn-lg">Create item</button>
+        </form>
+    </div>
+
+    <!-- table container -->
+    <div class="table-container" style="align-items: center; max-width: 600px; justify-content: center; padding-top: 1 rem;">
+        <table class="table table-bordered table-hover table-primary" id="itemTable">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Item name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Unit</th>
+                <th> Delete </th>
+                <th> Update </th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+
+   
+    
+    <!-- <div>
+        <button class="btn btn-primary" id="getItems">create item</button>
+        <button class="btn btn-primary" id="addItem"> Delete item</button>
+    </div> -->  
+</body>
+</html>
+

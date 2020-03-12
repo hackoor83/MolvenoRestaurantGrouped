@@ -1,9 +1,8 @@
 package com.example.molvenoRestauGrouped.dishMakerAndStock.controllers;
 
-import com.example.molvenoRestauGrouped.dishMakerAndStock.models.Dish;
+import com.example.molvenoRestauGrouped.dishMakerAndStock.models.DishOD;
 import com.example.molvenoRestauGrouped.dishMakerAndStock.models.IngredientAmount;
-import com.example.molvenoRestauGrouped.dishMakerAndStock.models.StockItem;
-import com.example.molvenoRestauGrouped.dishMakerAndStock.repositories.DishRepository;
+import com.example.molvenoRestauGrouped.dishMakerAndStock.repositories.DishODRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,26 +14,26 @@ import java.util.Set;
 public class DishMakerController {
 
     @Autowired
-    private DishRepository dishRepository;
+    private DishODRepository dishODRepository;
 
     @GetMapping
-    public List<Dish> listDishOfTheDay(){
-        return dishRepository.findAll();
+    public List<DishOD> listDishOfTheDay(){
+        return dishODRepository.findAll();
     }
 
     @GetMapping("/{id}/ingredients")
     public Set<IngredientAmount> getIngredientsForDish(@PathVariable Long id) {
-        return dishRepository.findById(id).get().getIngredientAmounts();
+        return dishODRepository.findById(id).get().getIngredientAmounts();
     }
 
     @PostMapping
-    public void addDishOfTheDay(@RequestBody Dish dish){
-        dishRepository.save(dish);
+    public void addDishOfTheDay(@RequestBody DishOD dishOD){
+        dishODRepository.save(dishOD);
     }
 
     @DeleteMapping("{id}")
     public void deleteDishOfTheDay(@PathVariable Long id){
-        dishRepository.deleteById(id);
+        dishODRepository.deleteById(id);
     }
 
 

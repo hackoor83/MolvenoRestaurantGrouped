@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Molveno Menu</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/css/menu.css" />
+  </head>
+  <body>
+    <nav class="navbar"></nav>
+    <section>
+      <div class="photo-banner"></div>
+    </section>
+    <div class="container">
+      <div class="menu-border" style="text-align: center;">
+        <!-- navigationbar of the menu categories -->
+        <div class="navigation">
+          <a href="#">
+            <h3 style="text-decoration: underline; color: #eee;">
+              Molveno Menu
+            </h3>
+          </a>
+          <a
+            href="#"
+            id="allMenu"
+            data-filter="all"
+            class="button active"
+            type="button"
+            >View All</a
+          >
+          <a
+            href="#"
+            id="dishoftheday"
+            data-filter="dishoftheday"
+            class="button"
+            >Dish of the Day</a
+          >
+        </div>
+        <div class="dishesContainer"></div>
+        <div class="myOrder"></div>
+      </div>
+      <div class="checkout">
+        <button type="button" class="myOrderBtn">My Order</button>
+      </div>
+    </div>
+
+    <script src="/js/index_menu.js"></script>
+  </body>
+</html>

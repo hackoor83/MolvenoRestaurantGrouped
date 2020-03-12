@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Dish {
+public class DishOD {
 
     @Id
     @GeneratedValue
@@ -25,7 +25,7 @@ public class Dish {
 //    )
 //    private Set<IngredientAmount> ingredients;
 
-    @OneToMany(mappedBy = "dish")
+    @OneToMany(mappedBy = "dishOD")
     private Set<IngredientAmount> ingredientAmounts;
 
     public Set<IngredientAmount> getIngredientAmounts() {

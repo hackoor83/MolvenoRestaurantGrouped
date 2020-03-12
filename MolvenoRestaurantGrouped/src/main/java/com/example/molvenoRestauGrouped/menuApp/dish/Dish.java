@@ -1,6 +1,5 @@
 package com.example.molvenoRestauGrouped.menuApp.dish;
 
-
 import com.example.molvenoRestauGrouped.menuApp.category.Category;
 
 import javax.persistence.Entity;
