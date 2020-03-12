@@ -1,7 +1,7 @@
 package com.example.molvenoRestauGrouped.dishMakerAndStock.repositories;
 
-import com.example.molvenoRestauGrouped.dishMakerAndStock.models.stockItem;
+import com.example.molvenoRestauGrouped.dishMakerAndStock.models.StockItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IngredientRepository extends JpaRepository<stockItem, Long> {
+public interface stockItemRepository extends JpaRepository<StockItem, Long> {
 }

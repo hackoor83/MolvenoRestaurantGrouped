@@ -67,36 +67,39 @@
                     </div>
                     <input type="number" id="profitMarginInput" class="form-control">
                 </div>
+                <button class="btn btn-success" id="startDishCreation">Start Creating</button>
             </div>
 
             <!-- Ingredient addition form -->
-            <fieldset>
-                <legend>Add ingredient</legend>
-                <div class="form-group">
-                    <label for="addIngredientNameInput">Item name</label>
-                    <select class="form-control" id="addIngredientNameInput"></select>
-                </div>
-                <div class="form-group">
-                    <label for="addIngredientAmountInput">Amount</label>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <select id="addIngredientAmountUnitPresentation" class="form-control"></select>
-                        </div>
-                        <input type="number" id="addIngredientAmountInput" class="form-control">
+            <div id="addIngredientForm" class="container toggleShow">
+                <fieldset>
+                    <legend>Add stockItem</legend>
+                    <div class="form-group">
+                        <label for="addIngredientNameInput">Item name</label>
+                        <select class="form-control" id="addIngredientNameInput"></select>
                     </div>
-                </div>
-                <div>
-                    <button id="addIngredientAddButton" class="btn btn-primary">Add</button>
-                    <button id="restartNewDishButton" class="btn btn-warning">Restart</button>
-                    <button id="fishAddingIngredientsButton" class="btn btn-success" type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveDishModal">Finish</button>
-                </div>
-            </fieldset>
+                    <div class="form-group">
+                        <label for="addIngredientAmountInput">Amount</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <select id="addIngredientAmountUnitPresentation" class="form-control"></select>
+                            </div>
+                            <input type="number" id="addIngredientAmountInput" class="form-control">
+                        </div>
+                    </div>
+                    <div>
+                        <button id="addIngredientAddButton" class="btn btn-primary">Add</button>
+                        <button id="restartNewDishButton" class="btn btn-warning">Restart</button>
+                        <button id="fishAddingIngredientsButton" class="btn btn-success" type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveDishModal">Finish</button>
+                    </div>
+                </fieldset>
+            </div>
         </div>
 
         <hr class="my-4">
 
         <!-- Ingridients of new dish table -->
-        <div class="container">
+        <div id="dishMakerIngredientTableDiv" class="container">
             <table id="dishMakerIngredientsTable" class="display">
                 <thead>
                     <tr>

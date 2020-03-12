@@ -1,12 +1,11 @@
 package com.example.molvenoRestauGrouped.dishMakerAndStock.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-public class DishOfTheDay {
+public class Dish {
 
     @Id
     @GeneratedValue
@@ -14,30 +13,39 @@ public class DishOfTheDay {
     private String dishName;
     private Double cost, price;
 
-    @OneToMany(
-            mappedBy = "dishOfTheDay",
-            cascade = {CascadeType.ALL}
-    )
-    private List<DishOfDayIngredient> dishOfDayIngredientList;
-//    private List<Ingredient> ingredients;
+//    @OneToMany(
+//            mappedBy = "dishOfTheDay",
+//            cascade = {CascadeType.ALL}
+//    )
+//    @ManyToMany
+//    @JoinTable(
+//            name = "ingredients",
+//            joinColumns = @JoinColumn(name = "dish_id"),
+//            inverseJoinColumns = @JoinColumn(name = "stockItem_id")
+//    )
+//    private Set<IngredientAmount> ingredients;
 
-//    public void setId(Long id) {
+    @OneToMany(mappedBy = "dish")
+    private Set<IngredientAmount> ingredientAmounts;
+
+    public Set<IngredientAmount> getIngredientAmounts() {
+        return ingredientAmounts;
+    }
+
+    public void setIngredientAmounts(Set<IngredientAmount> ingredientAmounts) {
+        this.ingredientAmounts = ingredientAmounts;
+    }
+
+    //    public void setId(Long id) {
 //        this.id = id;
 //    }
 
-    public List<DishOfDayIngredient> getDishOfDayIngredientList() {
-        return dishOfDayIngredientList;
-    }
-
-    public void setDishOfDayIngredientList(List<DishOfDayIngredient> dishOfDayIngredientList) {
-        this.dishOfDayIngredientList = dishOfDayIngredientList;
-    }
-
-    //    public List<Ingredient> getIngredients() {
+//
+//    public Set<StockItem> getIngredients() {
 //        return ingredients;
 //    }
-
-//    public void setIngredients(List<Ingredient> ingredients) {
+//
+//    public void setIngredients(Set<StockItem> ingredients) {
 //        this.ingredients = ingredients;
 //    }
 

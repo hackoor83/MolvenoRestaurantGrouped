@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Embeddable
-public class IngredientAmount implements Serializable {
+public class IngredientAmountKey implements Serializable {
 
     @Column(name = "stockItem_id")
     Long stockItemId;

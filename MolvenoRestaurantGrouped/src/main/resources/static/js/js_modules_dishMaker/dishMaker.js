@@ -1,4 +1,5 @@
 var dishMakerIngredientsTable;
+let newDishId;
 
 $(document).ready(function() {
     $("#dishMakerMainButton").click(showDishMakerForm);
@@ -6,6 +7,8 @@ $(document).ready(function() {
     $("#dishMakerSaveDishButton").click(saveNewDishToDb);
     $(".toggleShow").hide();
     $("#mainWindowAndButtons").show();
+    $("#startDishCreation").click(showAddIngredientForm);
+    // $("#addIngredientAddButton").click();
     dishMakerIngredientsTable = $('#dishMakerIngredientsTable').DataTable();
 
 });
@@ -59,6 +62,7 @@ function showDishMakerForm() {
         });
 
 
+
         //To sum up the total amount of ingredients
         $("#addIngredientAddButton").click(listIngredientToDish);
         let totalCostCalculated = 0;
@@ -83,12 +87,14 @@ function showDishMakerForm() {
                         $(
                             '<tr id="row' + item.id + '"><td>' + item.id + '</td>' +
                             '<td>' + inputIngredientName + '</td>' +
-                            '<td>' + ingredientAmount + '</td>' +
-                            '<td>' + inputUnitOption + '</td>' +
+                            '<td id="td-amount' + item.id + '">' + ingredientAmount + '</td>' +
+                            '<td id="td-unit' + item.id + '">' + inputUnitOption + '</td>' +
                             '<td>' + (Math.round(pricePerAmount * Math.pow(10, 2)) / Math.pow(10, 2)) + '</td>' +
                             '<td><button class="btn btn-danger" onclick="removeIngredient(' + item.id + "," + pricePerAmount + ');">Remove</button></td></tr>'
                             // '<td><button class="btn btn-danger delete" priceperamount="' + pricePerAmount + '">Remove</button></td></tr>'
                         )).draw();
+
+                    // addIngredientToDb(item.id, inputIngredientName, ingredientAmount, inputUnitOption, pricePerAmount);
 
                     totalCostCalculated += pricePerAmount;
                     sellingPrice = totalCostCalculated + (totalCostCalculated * ($("#profitMarginInput").val() / 100));
@@ -103,6 +109,7 @@ function showDishMakerForm() {
         //To update the cost and selling price alert box:
         function updateCostAndPrice() {
             $("#totalCostCalculated").text(Math.round(totalCostCalculated * Math.pow(10, 2)) / Math.pow(10, 2));
+            console.log('total cost calculated in updateCostAndPrice function: ' + totalCostCalculated);
             $("#sellingPriceAtSpan").text($("#profitMarginInput").val());
             $("#sellingPrice").text((Math.round(sellingPrice * Math.pow(10, 2)) / Math.pow(10, 2)));
         }
@@ -126,6 +133,47 @@ function showDishMakerForm() {
         }
 
     });
+
+}
+
+//to show the add ingredient form:
+
+// let newDishId = 0;
+
+function showAddIngredientForm() {
+    $("#addIngredientForm").show();
+    $("#dishMakerIngredientTableDiv").show();
+
+    //To create a dish of day id:
+
+    // let newDish = {
+    //     dishName: $("#newDishName").val()
+    // }
+
+    // let jsonObject = JSON.stringify(newDish);
+
+    // $.ajax({
+    //     url: "api/dishMaker",
+    //     type: "POST",
+    //     contentType: "application/json",
+    //     data: jsonObject,
+    //     success: function() {
+    //         alert("new dish id created");
+    //     },
+    //     error: function() {
+    //         alert("ERROR: Cannot create dish");
+    //     }
+    // });
+
+    // $.get("api/dishMaker", function(dishes) {
+    //     console.log(dishes);
+    //     for (i = 0; i < dishes.length; i++) {
+    //         if (dishes.dishName == $("#newDishName").val()) {
+    //             newDishId = dishes.id;
+    //         }
+    //     }
+    // });
+
 }
 
 // >>>> To remove an ingredient from the dish
@@ -140,7 +188,17 @@ function removeIngredient(id, pricePerAmountOfItem) {
     totalCostCalculated = 0;
     $("#totalCostCalculated").text(totalRecalculated);
 
-    alert('Ingredient removed!');
+    // $.ajax({
+    //     url: "api/dodIngredients/" + id,
+    //     type: "DELETE",
+    //     success: function() {
+    //         alert('ingredient REMOVED from db');
+    //     },
+    //     error: function() {
+    //         alert('ERROR');
+    //     }
+    // });
+
 }
 
 
@@ -156,21 +214,68 @@ function clearIngredientForm() {
     $("#sellingPrice").text('');
 }
 
+//To add ingredient to the db:
+// function addIngredientToDb(ingredientId, ingredientName, ingredientAmount, ingredientUnit, amountCost) {
+//     console.log(ingredientId, ingredientName, ingredientAmount, ingredientUnit, amountCost);
 
+
+
+// let newIngredient = {
+//     id: ingredientId,
+//     name: ingredientName,
+//     amount: ingredientAmount,
+//     unit: ingredientUnit,
+//     cost: amountCost,
+//     dishOfTheDay: {
+//         id: newDishId,
+//         dishName: $("#newDishName").val(),
+//         cost: $("#totalCostCalculated").text(),
+//         price: $("#sellingPrice").text()
+//     }
+// }
+
+// let jsonObject = JSON.stringify(newIngredient);
+
+// $.ajax({
+//     url: "api/dodIngredients",
+//     type: "POST",
+//     contentType: "application/json",
+//     data: jsonObject,
+//     success: function() {
+//         alert('ingredient added to db');
+//     },
+//     error: function() {
+//         alert('ERROR');
+//     }
+// });
+// }
 
 //>>> To add the new Dish to the database
 function saveNewDishToDb() {
+    console.log('total cost calculated in saveNewDishToDb function: ' + totalCostCalculated);
+
+    //iterate through the table to extract data and convert it into an array of objects:
+
+    let arrayOfIngredients = $("#dishMakerIngredientsTable tr").map(function() {
+        return [
+            $('td', this).map(function() {
+                return $(this).text();
+            }).get()
+        ];
+    }).get();
+    let jsonArrayOfIngredients = JSON.stringify(arrayOfIngredients);
+    console.log('array of ingredients: ' + arrayOfIngredients);
+    console.log('array of ingredients stringify: ' + jsonArrayOfIngredients);
+
+
     let newDish = {
         dishName: $("#newDishName").val(),
         cost: $("#totalCostCalculated").text(),
-        price: $("#sellingPrice").text(),
-        // ingredients: [{
-        //     id: ,
-        //     name: ,
-        //     amount: ,
-        //     unit: ,
-        //     cost:
-        // }]
+        price: $("#sellingPrice").text()
+            // ingredientAmounts: [{
+            //     amount: ,
+            //     unit:
+            // }]
     }
 
     let jsonObject = JSON.stringify(newDish);

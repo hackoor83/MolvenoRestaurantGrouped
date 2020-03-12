@@ -14,7 +14,7 @@ $(document).ready(function() {
             {
                 data: null,
                 render: function(data, type, row) {
-                    return '<td><button class="btn btn-outline-success show" rowId="' + data.ingredients + '">Show</button></td>'
+                    return '<td><button class="btn btn-outline-success show" rowId="' + data.id + '">Show</button></td>'
                 }
             },
             {
@@ -25,6 +25,10 @@ $(document).ready(function() {
                 }
             }
         ]
+    });
+
+    $.get("api/dishMaker", function(dishes) {
+        console.log(dishes);
     });
 
     //>>> To delete a dish from the database
@@ -66,6 +70,17 @@ $(document).ready(function() {
 
     });
 
+    //To show the ingredients of a specific dish
+    $("#listDishOfTheDayTable").on('click', 'button.show', function() {
+        let rowId = $(this).attr('rowId');
+        console.log('show button clicked, the row id is: ' + rowId);
+
+        $.get("api/dishMaker/" + rowId + "/ingredients", function(ingredientsAmounts) {
+            console.log('the ingredients amounts of row id: ' + rowId + " is: " + ingredientsAmounts);
+        });
+    });
+
+
 });
 
 
@@ -73,10 +88,10 @@ $(document).ready(function() {
 function showListDishOfTheDay() {
     $(".toggleShow").hide();
     $("#listDishOfTheDayForm").show();
+    listDishOfTheDayTable.ajax.reload();
 }
 
-//     $.get("api/dishMaker", function(dishes) {
-//         console.log(dishes);
+
 
 //         //To clear the contents of the table, this is instead of: $("#listItemsTableBody").empty();
 //         listDishOfTheDayTable.clear();

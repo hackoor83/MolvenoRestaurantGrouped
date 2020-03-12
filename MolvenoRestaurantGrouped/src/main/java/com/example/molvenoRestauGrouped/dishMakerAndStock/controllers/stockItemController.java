@@ -1,7 +1,7 @@
 package com.example.molvenoRestauGrouped.dishMakerAndStock.controllers;
 
-import com.example.molvenoRestauGrouped.dishMakerAndStock.models.Ingredient;
-import com.example.molvenoRestauGrouped.dishMakerAndStock.repositories.IngredientRepository;
+import com.example.molvenoRestauGrouped.dishMakerAndStock.models.StockItem;
+import com.example.molvenoRestauGrouped.dishMakerAndStock.repositories.stockItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,30 +9,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/ingredientsDb")
-public class IngredientsController {
+public class stockItemController {
 
     @Autowired
-    IngredientRepository ingredientRepository;
+    stockItemRepository stockItemRepository;
 
     @GetMapping
-    public List<Ingredient> getIngredients(){
-        return ingredientRepository.findAll();
+    public List<StockItem> getIngredients(){
+        return stockItemRepository.findAll();
     }
 
     @PostMapping
-    public void addIngredient(@RequestBody Ingredient ingredient){
-        ingredientRepository.save(ingredient);
+    public void addIngredient(@RequestBody StockItem stockItem){
+        stockItemRepository.save(stockItem);
     }
 
     @DeleteMapping("/{id}")
     public void deleteIngredient(@PathVariable Long id){
-        ingredientRepository.deleteById(id);
+        stockItemRepository.deleteById(id);
     }
 
     @PutMapping("/update/{id}")
-    public void editStockItem(@RequestBody Ingredient ingredient, @PathVariable Long id){
-        ingredient.setId(id);
-        ingredientRepository.save(ingredient);
+    public void editStockItem(@RequestBody StockItem stockItem, @PathVariable Long id){
+        stockItem.setId(id);
+        stockItemRepository.save(stockItem);
 
     }
 

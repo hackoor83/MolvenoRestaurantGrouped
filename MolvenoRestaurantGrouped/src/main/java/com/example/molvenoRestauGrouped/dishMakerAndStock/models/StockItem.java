@@ -1,19 +1,35 @@
 package com.example.molvenoRestauGrouped.dishMakerAndStock.models;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-public class Ingredient {
+public class StockItem {
     @Id
     @GeneratedValue
     private Long id;
     private String name, unit;
     private Double amount;
     private Double cost;
+//
+//    @ManyToMany(mappedBy = "ingredients")
+//    Set<Dish> dishList;
 
-//    @ManyToOne
-//    @JoinColumn(name="dishOfTheDay_id")
-//    private DishOfTheDay dishOfTheDay;
+    @OneToMany(mappedBy = "stockItem")
+    private Set<IngredientAmount> ingredientAmounts;
+
+    public Set<IngredientAmount> getIngredientAmounts() {
+        return ingredientAmounts;
+    }
+
+    public void setIngredientAmounts(Set<IngredientAmount> ingredientAmounts) {
+        this.ingredientAmounts = ingredientAmounts;
+    }
+
+
+    //    @JoinColumn(name="dish_id")
+//    private Dish dish;
 
 //    public DishOfTheDay getDishOfTheDay() {
 //        return dishOfTheDay;
@@ -21,6 +37,15 @@ public class Ingredient {
 //
 //    public void setDishOfTheDay(DishOfTheDay dishOfTheDay) {
 //        this.dishOfTheDay = dishOfTheDay;
+//    }
+
+
+//    public Set<Dish> getDishList() {
+//        return dishList;
+//    }
+//
+//    public void setDishList(Set<Dish> dishList) {
+//        this.dishList = dishList;
 //    }
 
     public Long getId() {
