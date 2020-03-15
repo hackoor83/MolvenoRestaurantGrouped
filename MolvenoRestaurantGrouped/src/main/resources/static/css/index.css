@@ -117,12 +117,6 @@ p {
   text-align: center;
 }
 
-#Showbanner {
-  background: #333 url("../css/2.jpg") no-repeat center center/cover;
-  height: 100vh;
-  color: #fff;
-  animation: animate 10s infinite;
-}
 #Showbanner .showbanner-content {
   display: flex;
   flex-direction: column;

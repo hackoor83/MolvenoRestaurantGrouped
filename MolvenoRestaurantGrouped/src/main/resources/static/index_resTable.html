@@ -4,30 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Table</title>
-<!--    jQuery-->
+    <!--    jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!--    modal link-->
-    <script
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"
-    ></script>
-<!--    datatable-->
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <!--    modal link-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--    datatable-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-<!--    div style-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--    div style-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="js/main_resTable.js"></script>
+    <link rel="stylesheet" href="css/index.css" />
+
 </head>
 
 <body>
-<!-- Modal -->
 
-    <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
+    <nav id="myNavbar">
+        <h1 id="logo">
+            <span class="text"> <i class="fa fa-vk"></i> Molveno </span> Restaurant
+        </h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index_reservation.html">Reservation</a></li>
+            <li><a href="index_menu.html">Menu</a></li>
+            <li><a href="index_dishMaker.html">Stock</a></li>
+            <li>
+                <a href="#">Control Panel</a>
+                <ul class="inside">
+                    <li><a href="index_guest.html">Guests</a></li>
+                    <li><a href="index_category.html">Categories</a></li>
+                    <li><a href="index_dish.html">Dishes</a></li>
+                    <li><a href="index_resTable.html">Tables</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -63,12 +81,13 @@
             <input id="numOfSeats" type="number"><br></div>
         <div class="form-group has-success">
             <label>Table label :</label>
-            <input id="tableNum" type="text"></div>
+            <input id="tableNum" type="text">
+        </div>
 
-<!--        <div class="custom-control custom-switch">-->
-<!--            <input class="custom-control-input" id="availability" type="checkbox" checked="">-->
-<!--            <label class="custom-control-label" for="availability">Available</label>-->
-<!--        </div>-->
+        <!--        <div class="custom-control custom-switch">-->
+        <!--            <input class="custom-control-input" id="availability" type="checkbox" checked="">-->
+        <!--            <label class="custom-control-label" for="availability">Available</label>-->
+        <!--        </div>-->
 
         <div>
             <button class="btn btn-primary" id="addTable"> Add table</button>
@@ -80,7 +99,7 @@
                         <th scope="col">Number of Table</th>
                         <th scope="col">The shape of table</th>
                         <th scope="col">The number of seats</th>
-<!--                        <th scope="col">Availability</th>-->
+                        <!--                        <th scope="col">Availability</th>-->
                         <th scope="col">Delete</th>
                     </tr>
                 </thead>

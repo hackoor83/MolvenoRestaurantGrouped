@@ -9,13 +9,35 @@
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="css/fontAwesome.css" />
     <link rel="stylesheet" href="/css/menu.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
 </head>
 
 <body>
-    <nav class="navbar"></nav>
-    <section>
+    <!-- <nav class="navbar"></nav> -->
+    <nav id="myNavbar">
+        <h1 id="logo">
+            <span class="text"> <i class="fa fa-vk"></i> Molveno </span> Restaurant
+        </h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index_reservation.html">Reservation</a></li>
+            <li><a href="index_menu.html">Menu</a></li>
+            <li><a href="index_dishMaker.html">Stock</a></li>
+            <li>
+                <a href="#">Control Panel</a>
+                <ul class="inside">
+                    <li><a href="index_guest.html">Guests</a></li>
+                    <li><a href="index_category.html">Categories</a></li>
+                    <li><a href="index_dish.html">Dishes</a></li>
+                    <li><a href="index_resTable.html">Tables</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- <section>
         <div class="photo-banner"></div>
-    </section>
+    </section> -->
     <div class="container">
         <div class="menu-border" style="text-align: center;">
             <!-- navigationbar of the menu categories -->
@@ -27,19 +49,13 @@
                 </a>
                 <a href="#" id="allMenu" data-filter="all" class="button active" type="button">View All</a
           >
-          <a
-            href="#"
-            id="dishoftheday"
-            data-filter="dishoftheday"
-            class="button"
-            >Dish of the Day</a
-          >
+         
         </div>
         <div class="dishesContainer"></div>
         <div class="myOrder"></div>
       </div>
       <div class="checkout">
-        <button type="button" class="myOrderBtn">My Order</button>
+        <button type="button" class="myOrderBtn">The Order</button>
       </div>
     </div>
 

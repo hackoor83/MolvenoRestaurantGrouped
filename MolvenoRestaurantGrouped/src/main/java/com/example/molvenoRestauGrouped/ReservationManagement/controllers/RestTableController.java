@@ -37,7 +37,7 @@ public List<ResTable> getAllTable  (){
     myrepository.deleteById(id);
     }
 
-    @PutMapping({"/id"})
+    @PutMapping("update/{id}")
     public void updateTable (@PathVariable Long id,@RequestBody ResTable resTable){
    // resTable.setId(id);
     myrepository.save(resTable);
